@@ -12,5 +12,5 @@ services:
       - USERNAME=admin
       - PASSWORD=admin
     volumes:
-      - /home/pi/incoming/torrents:/to_download
-      - /home/pi/downloaded/files:/output
+      - /home/pi/transmission/torrents:/to_download
+      - /home/pi/transmission/downloaded:/output
