@@ -1,28 +1,16 @@
-version: '2.1'
+version: '2.0'
 services:
   transmission:
     container_name: transmission
-    image: dperson/transmission
+    image: jaymoulin/rpi-transmission
     restart: always
-    network_mode: host
     ports:
       - "9091:9091"
       - "51413:51413"
       - "51413:51413/udp"
     environment:
-      - TZ=Europe/Bucharest
-      - TR_IDLE_SEEDING_LIMIT_ENABLED=true
-      - TR_IDLE_SEEDING_LIMIT=600
-      - TR_RATIO_LIMIT_ENABLED=true
-      - TR_RATIO_LIMIT=4
-      - TR_DOWNLOAD_DIR=/downloads
-      - TR_INCOMPLETE_DIR_ENABLED=false
-      - TR_RENAME_PARTIAL_FILES=true
-      - TR_DHT_ENABLED=false
-      - TR_PEX_ENABLED=false
-      - USERID=1000
-      - GROUPID=1000
+      - USERNAME=admin
+      - PASSWORD=admin
     volumes:
-      - /home/pi/opt/config/transmission:/var/lib/transmission-daemon/info
-      - /home/pi/opt/downloads/complete:/downloads
-      - /home/pi/opt/downloads/temp:/var/lib/transmission-daemon/incomplete
+      - /home/pi/incoming/torrents:/to_download
+      - /home/pi/downloaded/files:/output
